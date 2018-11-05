@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import CardList from './components/CardList';
-import Modals from './components/Modals';
+import Modal from './components/Modal';
 
 export default class App extends Component {
     render() {
         return (
             <div className="app">
-                <CardList/>
-                <Modals/>
+                <CardList />
+                <Modal />
             </div>
         );
     }
