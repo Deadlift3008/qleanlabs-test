@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
 import withCardsRequest from './withCardsRequest';
 import { openModal, sendCards } from '../actions/appActions';
@@ -22,30 +21,27 @@ class CardList extends Component {
 
         return (
             <div>
-                <Button
-                    className="button-send"
-                    variant="contained"
-                    color="default"
-                    onClick={() => sendCards(cards)}>
-                    Отправить
-                </Button>
-                <Grid container className="cardlist-container">
-                    <List>
-                        { cards.map(item => (
-                            <Grid key={item.id} item xs={12} sm={6}>
-                                <Paper>
-                                    <CardListItem
-                                        name={item.name}
-                                        email={item.email}
-                                        body={item.body}
-                                        id={item.id}
-                                        onCardClick={() => openModal(item)}
-                                    />
-                                </Paper>
-                            </Grid>
-                        )) }
-                    </List>
-                </Grid>
+                <div className="button-send">
+                    <Button
+                        variant="contained"
+                        color="default"
+                        onClick={() => sendCards(cards)}>
+                        Отправить
+                    </Button>
+                </div>
+                <List className="cardlist-container">
+                    { cards.map(item => (
+                        <Paper key={item.id}>
+                            <CardListItem
+                                name={item.name}
+                                email={item.email}
+                                body={item.body}
+                                id={item.id}
+                                onCardClick={() => openModal(item)}
+                            />
+                        </Paper>
+                    )) }
+                </List>
             </div>
         );
     }

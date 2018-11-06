@@ -14,6 +14,54 @@ code {
 }
 
 .button-send {
-  margin-top: 30px;
-  margin-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.app .cardlist-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.app .cardlist-container > div {
+    margin-top: 10px;
+}
+
+.list-item {
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    width: 50%;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-form .text-field {
+    margin-top: 20px;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.card-form button {
+    margin-top: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 880px) {
+    .app .cardlist-container {
+        width: 98%;
+    }
+
+    .modal {
+        width: 98%;
+    }
 }

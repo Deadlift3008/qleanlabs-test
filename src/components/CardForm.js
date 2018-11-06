@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,8 +11,8 @@ import { updateCard, closeModal } from '../actions/appActions';
 
 const Field = ({ label, text }) => (
     <Grid item>
-        <Typography component="h4">{ label }</Typography>
-        <Typography component="p">{ text }</Typography>
+        <Typography component="h4" variant="subtitle1">{ label }</Typography>
+        <Typography component="p" variant="p">{ text }</Typography>
     </Grid>
 );
 
@@ -37,31 +36,35 @@ class CardForm extends Component {
 
     render() {
         const { name, email } = this.props.data;
-        const { onChangeField, formValues } = this.props;
+        const { onChangeField, formValues, closeModal } = this.props;
 
         return (
             <div className="card-form">
-                <Paper>
-                    <Grid container direction="column">
-                        <Grid item>
-                            <Typography component="h3" variant="h6">Редактирование поля</Typography>
-                        </Grid>
-                        <Field label="Имя" text={name} />
-                        <Field label="Email" text={email} />
-                        <Grid item>
-                            <TextField
-                                label="Поле карточки"
-                                multiline
-                                rowsMax="10"
-                                value={formValues.body}
-                                onChange={onChangeField('body')}
-                            />
-                        </Grid>
+                <Grid container direction="column">
+                    <Grid item>
+                        <Typography component="h3" variant="h6">Редактирование поля</Typography>
                     </Grid>
+                    <Field label="Имя" text={name} />
+                    <Field label="Email" text={email} />
+                    <Grid item className="text-field">
+                        <TextField
+                            label="Поле карточки"
+                            multiline
+                            rowsMax="10"
+                            fullWidth
+                            value={formValues.body}
+                            onChange={onChangeField('body')}
+                        />
+                    </Grid>
+                </Grid>
+                <div className="button-container">
                     <Button onClick={this.onApply} color="primary" variant="contained">
                         Применить
                     </Button>
-                </Paper>
+                    <Button onClick={closeModal} color="secondary">
+                        Закрыть
+                    </Button>
+                </div>
             </div>
         );
     }

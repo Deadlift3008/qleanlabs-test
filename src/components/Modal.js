@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ModalWrap from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
 
 import { closeModal } from '../actions/appActions';
 import CardForm from './CardForm';
@@ -17,7 +18,9 @@ class Modal extends Component {
 
         return (
             <ModalWrap open={open} onClose={closeModal}>
-                <CardForm data={data} />
+                <Paper className="modal">
+                    <CardForm data={data} />
+                </Paper>
             </ModalWrap>
         );
     }
