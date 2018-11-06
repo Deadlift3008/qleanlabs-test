@@ -1,6 +1,10 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../constants/actionTypes';
 
-export default function modal(state = {}, action) {
+const initialState = {
+    open: false
+};
+
+export default function modal(state = initialState, action) {
     switch(action.type) {
         case OPEN_MODAL:
             return {

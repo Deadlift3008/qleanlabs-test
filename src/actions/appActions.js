@@ -16,13 +16,13 @@ const createAction = (type) => (payload) => ({
 
 export const getCards = () => {
     return (dispatch) => {
-        dispatch({
+        dispatch(() => ({
             type: GET_CARDS,
             loading: true,
             error: false
-        });
+        }));
 
-        axios.get(CARDS)
+        return axios.get(CARDS)
             .then(response => {
                 dispatch({
                     type: GET_CARDS,
@@ -30,7 +30,7 @@ export const getCards = () => {
                     error: false,
                     payload: response.data
                 });
-            }).catch(response => {
+            }, response => {
                 dispatch({
                     type: GET_CARDS,
                     loading: false,
